@@ -1,4 +1,4 @@
-abstract class AdventOfCode(testPart1: Any, testPart2: Any) {
+abstract class AdventOfCode(testPart1: Any?, testPart2: Any?) {
     abstract fun part1(input: List<String>): Any
 
     abstract fun part2(input: List<String>): Any
@@ -7,8 +7,12 @@ abstract class AdventOfCode(testPart1: Any, testPart2: Any) {
     init {
         val currentDay = this::class.simpleName.toString()
         val testInput = readInput("${currentDay}_test")
-        check(part1(testInput) == testPart1)
-        check(part2(testInput) == testPart2)
+        testPart1?.let {
+            check(part1(testInput) == it)
+        }
+        testPart2?.let {
+            check(part2(testInput) == it)
+        }
 
 
         val input = readInput(currentDay)
