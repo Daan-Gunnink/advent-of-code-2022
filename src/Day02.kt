@@ -1,5 +1,5 @@
-fun main() {
-    fun calculateScoreFromMap(input: List<String>, map: Map<String, Int>): Int {
+class Day02 : AdventOfCode(15, 12) {
+    private fun calculateScoreFromMap(input: List<String>, map: Map<String, Int>): Int {
         var totalScore = 0
 
         input.forEach {
@@ -9,7 +9,7 @@ fun main() {
         return totalScore
     }
 
-    fun part1(input: List<String>): Int {
+    override fun part1(input: List<String>): Int {
         return calculateScoreFromMap(
                 input,
                 mapOf(
@@ -26,7 +26,7 @@ fun main() {
         )
     }
 
-    fun part2(input: List<String>): Int {
+    override fun part2(input: List<String>): Int {
         return calculateScoreFromMap(
                 input,
                 mapOf(
@@ -41,15 +41,4 @@ fun main() {
                         Pair("C Z", 7),
         ))
     }
-
-
-    // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day02_test")
-    check(part1(testInput) == 15)
-    check(part2(testInput) == 12)
-
-
-    val input = readInput("Day02")
-    println(part1(input))
-    println(part2(input))
 }
