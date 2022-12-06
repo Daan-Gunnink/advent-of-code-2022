@@ -1,10 +1,6 @@
 class Day06 : AdventOfCode(7, 19) {
     private fun parse(input: List<String>, size: Int): Int {
-        return input.sumOf {
-            val result = it.withIndex().windowed(size, 1).map { it.distinctBy { it.value } }.firstOrNull { it.size == size }?.lastOrNull()?.index
-                    ?: 0
-            result + 1
-        }
+        return input.first().windowed(size).indexOfFirst { it.toSet().size == size } + size
     }
 
     override fun part1(input: List<String>): Int {
